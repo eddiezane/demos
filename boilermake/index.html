@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Awesome Chat App</title>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io.connect('/');
+  </script>
+</head>
+<body>
+
+<table id="chat">
+</table>
+
+<script>
+  socket.on('msg', function(msg) {
+    var newTr = document.createElement("tr");
+    newTr.textContent = msg.from + ": " + msg.text;
+    document.getElementById("chat").appendChild(newTr);
+  });
+</script>
+</body>
+</html>
